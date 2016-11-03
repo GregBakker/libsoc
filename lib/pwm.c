@@ -251,8 +251,8 @@ int libsoc_pwm_set_duty_cycle(pwm *pwm, unsigned int duty)
     return EXIT_FAILURE;
   }
 
-  libsoc_pwm_debug(__func__, pwm->chip, pwm->pwm,
-    "setting duty to %d", duty);
+  //libsoc_pwm_debug(__func__, pwm->chip, pwm->pwm,
+  //  "setting duty to %d", duty);
 
   return file_write_int_fd(pwm->duty_fd, duty);
 }
