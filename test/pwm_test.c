@@ -36,6 +36,26 @@ int main(void)
     goto fail;
   }
 
+  libsoc_pwm_set_period(pwm, 10);
+
+  int current_period = libsoc_pwm_get_period(pwm);
+
+  if (current_period != 10)
+  {
+    printf("Failed period test\n");
+    goto fail;
+  }
+
+  libsoc_pwm_set_duty_cycle(pwm, 5);
+
+  int current_duty = libsoc_pwm_get_duty_cycle(pwm);
+
+  if (current_duty != 5)
+  {
+    printf("Failed duty test\n");
+    goto fail;
+  }
+
   libsoc_pwm_set_enabled(pwm, ENABLED);
 
   int enabled = libsoc_pwm_get_enabled(pwm);
@@ -55,26 +75,6 @@ int main(void)
   {
     printf("Failed disabling test\n");
     ret = EXIT_FAILURE;
-    goto fail;
-  }
-
-  libsoc_pwm_set_period(pwm, 10);
-
-  int current_period = libsoc_pwm_get_period(pwm);
-
-  if (current_period != 10)
-  {
-    printf("Failed period test\n");
-    goto fail;
-  }
-
-  libsoc_pwm_set_duty_cycle(pwm, 5);
-
-  int current_duty = libsoc_pwm_get_duty_cycle(pwm);
-
-  if (current_duty != 5)
-  {
-    printf("Failed duty test\n");
     goto fail;
   }
 
